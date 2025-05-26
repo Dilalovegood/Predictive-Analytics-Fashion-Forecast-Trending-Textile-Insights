@@ -78,13 +78,12 @@ Pada tahap ini, dilakukan dua teknik data preparation untuk mempersiapkan data m
   <img src="select_fitur.png" />
   </p>
 - <b>Encoding Fitur Kategori</b>
-  Seluruh kolom fitur dalam X bertipe objek (string) diubah ke bentuk numerik menggunakan metode Label Encoding agar dapat diproses oleh algoritma machine learning.
-  **Metode** : LabelEncoder dari sklearn.preprocessing.
-  **Kolom yang diubah** :
-  Semua kolom bertipe object diubah menjadi numerik : Brand, Category, Color, Size, Material.
+  Seluruh kolom fitur dalam X bertipe objek (string) diubah ke bentuk numerik menggunakan metode Label Encoding agar dapat diproses oleh algoritma machine learning.<br>
+  **Metode** : LabelEncoder dari sklearn.preprocessing.<br>
+  **Kolom yang diubah** : Semua kolom bertipe object diubah menjadi numerik : Brand, Category, Color, Size, Material.<br>
 - <b>Train-Test Split</b>
-  **Metode** : train_test_split dari sklearn.model_selection.
-  **Rasio pembagian** : Pembagian dataset diabgi menjadi 80:20 yaitu 80% data latih dan 20% data uji menggunakan train_test_split.
+  **Metode** : train_test_split dari sklearn.model_selection.<br>
+  **Rasio pembagian** : Pembagian dataset diabgi menjadi 80:20 yaitu 80% data latih dan 20% data uji menggunakan train_test_split.<br>
   **Tujuan** : Untuk mengukur kemampuan generalisasi model terhadap data yang belum pernah dilihat sebelumnya, serta menghindari overfitting.
 
 ## Modeling
