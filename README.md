@@ -163,17 +163,19 @@ Prediksi dari masing-masing model terhadap satu sampel data:
 
 <b>Business Evaluation</b>
 
-- Model menjawab problem statement
-  Model Linear Regression, Random Forest, dan XGBoost telah mampu mempelajari pola data dan memberikan prediksi harga yang cukup akurat. Model Linear Regression secara khusus menunjukkan keseimbangan terbaik antara akurasi dan stabilitas. Ini membantu pelaku bisnis fashion mengurangi risiko produksi barang yang tidak sesuai tren serta mendukung penetapan harga yang kompetitif berdasarkan data atribut produk seperti brand, warna, dan material.
+- Model menjawab problem statement</br>
+  a. Model Linear Regression, Random Forest, dan XGBoost telah mampu mempelajari pola data dan memberikan prediksi harga yang cukup akurat.</br>
+  b. Model Linear Regression secara khusus menunjukkan keseimbangan terbaik antara akurasi dan stabilitas.</br>
+  c. Ini membantu pelaku bisnis fashion mengurangi risiko produksi barang yang tidak sesuai tren serta mendukung penetapan harga yang kompetitif berdasarkan data atribut produk seperti brand, warna, dan material.
 
-- Model mencapai goals yang diharapkan
-  a. Model Linear Regression berhasil dibangun sebagai sistem prediksi harga berbasis data yang akurat dan stabil.
-  b. Model-model tree-based seperti Random Forest dan XGBoost juga dievaluasi dan dapat digunakan untuk interpretasi fitur (meskipun tidak dipilih untuk deployment), memberikan wawasan penting tentang pengaruh atribut.
+- Model mencapai goals yang diharapkan</br>
+  a. Model Linear Regression berhasil dibangun sebagai sistem prediksi harga berbasis data yang akurat dan stabil.</br>
+  b. Model-model tree-based seperti Random Forest dan XGBoost juga dievaluasi dan dapat digunakan untuk interpretasi fitur (meskipun tidak dipilih untuk deployment), memberikan wawasan penting tentang pengaruh atribut.</br>
   c. Tiga model telah diterapkan dan dibandingkan (Linear Regression, Random Forest, XGBoost), dan evaluasinya membantu menentukan model yang paling cocok untuk diterapkan pada data pasar fashion.
 
-- Dampak terhadap Solusi Statement
-  a. Perbandingan model: Linear Regression, Random Forest, dan XGBoost menunjukkan perbedaan signifikan dalam performa dan hasil ini menunjukkan bahwa pemilihan model yang tepat dapat meningkatkan akurasi prediksi secara signifikan.
-  b. Pemilihan metrik evaluasi yang relevan (MSE): Memberikan pemahaman numerik yang kuat terhadap performa model dalam konteks bisnis.
+- Dampak terhadap Solusi Statement</br>
+  a. Perbandingan model: Linear Regression, Random Forest, dan XGBoost menunjukkan perbedaan signifikan dalam performa dan hasil ini menunjukkan bahwa pemilihan model yang tepat dapat meningkatkan akurasi prediksi secara signifikan.</br>
+  b. Pemilihan metrik evaluasi yang relevan (MSE): Memberikan pemahaman numerik yang kuat terhadap performa model dalam konteks bisnis.</br>
   c. Prediksi pada data baru: Menunjukkan bahwa SVM mampu memberikan estimasi harga yang paling dekat dengan kenyataan.
 
 <b>Kesimpulan Akhir</b>
