@@ -164,7 +164,7 @@ Prediksi dari masing-masing model terhadap satu sampel data:
 <b>Business Evaluation</b>
 
 - Model menjawab problem statement
-  Model Linear Regression, Random Forest, dan XGBoost telah mampu mempelajari pola data dan memberikan prediksi harga yang cukup akurat. Model SVM secara khusus menunjukkan keseimbangan terbaik antara akurasi dan stabilitas. Ini membantu pelaku bisnis fashion mengurangi risiko produksi barang yang tidak sesuai tren serta mendukung penetapan harga yang kompetitif berdasarkan data atribut produk seperti brand, warna, dan material.
+  Model Linear Regression, Random Forest, dan XGBoost telah mampu mempelajari pola data dan memberikan prediksi harga yang cukup akurat. Model Linear Regression secara khusus menunjukkan keseimbangan terbaik antara akurasi dan stabilitas. Ini membantu pelaku bisnis fashion mengurangi risiko produksi barang yang tidak sesuai tren serta mendukung penetapan harga yang kompetitif berdasarkan data atribut produk seperti brand, warna, dan material.
 
 - Model mencapai goals yang diharapkan
   a. Model Linear Regression berhasil dibangun sebagai sistem prediksi harga berbasis data yang akurat dan stabil.
