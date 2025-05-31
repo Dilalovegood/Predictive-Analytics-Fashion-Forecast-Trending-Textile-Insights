@@ -71,19 +71,19 @@ Dataset berisi 1.000 produk fashion dari sebuah perusahaan fast fashion Eropa, m
 
 Pada tahap ini, dilakukan dua teknik data preparation untuk mempersiapkan data mentah menjadi bentuk yang optimal.
 
+- <b>Encoding Fitur Kategori</b>
+  Seluruh kolom fitur dalam X bertipe objek (string) diubah ke bentuk numerik menggunakan metode Label Encoding sebelum di split agar dapat diproses oleh algoritma machine learning.
+  **Metode** : LabelEncoder dari sklearn.preprocessing.
+  Semua kolom bertipe object diubah menjadi numerik : Brand, Category, Color, Size, Material.
 - <b>Penentuan Fitur dan Target</b>
   **Variabel fitur (X)** mencakup seluruh kolom kecuali kolom Price, yaitu: Brand, Category, Color, Size, dan Material.
   **Variabel target (y)** adalah kolom Price, yang merepresentasikan harga produk fashion.
   <p align="center">
   <img src="select_fitur.png" />
   </p>
-- <b>Encoding Fitur Kategori</b>
-  Seluruh kolom fitur dalam X bertipe objek (string) diubah ke bentuk numerik menggunakan metode Label Encoding agar dapat diproses oleh algoritma machine learning.<br>
-  **Metode** : LabelEncoder dari sklearn.preprocessing.<br>
-  **Kolom yang diubah** : Semua kolom bertipe object diubah menjadi numerik : Brand, Category, Color, Size, Material.<br>
 - <b>Train-Test Split</b>
-  **Metode** : train_test_split dari sklearn.model_selection.<br>
-  **Rasio pembagian** : Pembagian dataset diabgi menjadi 80:20 yaitu 80% data latih dan 20% data uji menggunakan train_test_split.<br>
+  **Metode** : train_test_split dari sklearn.model_selection.
+  **Rasio pembagian** : Pembagian dataset diabgi menjadi 80:20 yaitu 80% data latih dan 20% data uji menggunakan train_test_split.
   **Tujuan** : Untuk mengukur kemampuan generalisasi model terhadap data yang belum pernah dilihat sebelumnya, serta menghindari overfitting.
 
 ## Modeling
@@ -155,28 +155,32 @@ Prediksi dari masing-masing model terhadap satu sampel data:
   <img src="prediksi.png" />
 </p>
 
-Model SVM (dengan pipeline dan scaling) menghasilkan prediksi paling dekat ke nilai aktual dan menunjukkan keseimbangan antara akurasi dan stabilitas.
+- Linear Regression menghasilkan prediksi sebesar 104.2, yang berarti terjadi selisih (error) sebesar +3.2 dari nilai aktual. Ini menunjukkan bahwa model Linear Regression memberikan hasil yang paling mendekati nilai sebenarnya, dengan deviasi paling kecil.
+
+- Random Forest memberikan hasil prediksi sebesar 114.4, menyimpang +13.4 dari nilai aktual. Ini merupakan deviasi terbesar di antara ketiga model, menandakan bahwa prediksi dari Random Forest kurang akurat untuk data ini.
+
+- XGBoost memprediksi nilai sebesar 107.5, dengan selisih +6.5 terhadap nilai sebenarnya. Meskipun tidak seakurat Linear Regression, hasil prediksinya masih dalam batas kesalahan yang moderat dan lebih baik dibandingkan Random Forest.
 
 <b>Business Evaluation</b>
 
 - Model menjawab problem statement
-  Model SVM, Random Forest, dan XGBoost telah mampu mempelajari pola data dan memberikan prediksi harga yang cukup akurat. Model SVM secara khusus menunjukkan keseimbangan terbaik antara akurasi dan stabilitas. Ini membantu pelaku bisnis fashion mengurangi risiko produksi barang yang tidak sesuai tren serta mendukung penetapan harga yang kompetitif berdasarkan data atribut produk seperti brand, warna, dan material.
+  Model Linear Regression, Random Forest, dan XGBoost telah mampu mempelajari pola data dan memberikan prediksi harga yang cukup akurat. Model SVM secara khusus menunjukkan keseimbangan terbaik antara akurasi dan stabilitas. Ini membantu pelaku bisnis fashion mengurangi risiko produksi barang yang tidak sesuai tren serta mendukung penetapan harga yang kompetitif berdasarkan data atribut produk seperti brand, warna, dan material.
 
 - Model mencapai goals yang diharapkan
-  a. Model SVM berhasil dibangun sebagai sistem prediksi harga berbasis data yang akurat dan stabil.
+  a. Model Linear Regression berhasil dibangun sebagai sistem prediksi harga berbasis data yang akurat dan stabil.
   b. Model-model tree-based seperti Random Forest dan XGBoost juga dievaluasi dan dapat digunakan untuk interpretasi fitur (meskipun tidak dipilih untuk deployment), memberikan wawasan penting tentang pengaruh atribut.
   c. Tiga model telah diterapkan dan dibandingkan (Linear Regression, Random Forest, XGBoost), dan evaluasinya membantu menentukan model yang paling cocok untuk diterapkan pada data pasar fashion.
 
 - Dampak terhadap Solusi Statement
-  a. Perbandingan model: SVM, Random Forest, dan XGBoost menunjukkan perbedaan signifikan dalam performa, dan hasil ini menunjukkan bahwa pemilihan model yang tepat dapat meningkatkan akurasi prediksi secara signifikan.
+  a. Perbandingan model: Linear Regression, Random Forest, dan XGBoost menunjukkan perbedaan signifikan dalam performa dan hasil ini menunjukkan bahwa pemilihan model yang tepat dapat meningkatkan akurasi prediksi secara signifikan.
   b. Pemilihan metrik evaluasi yang relevan (MSE): Memberikan pemahaman numerik yang kuat terhadap performa model dalam konteks bisnis.
   c. Prediksi pada data baru: Menunjukkan bahwa SVM mampu memberikan estimasi harga yang paling dekat dengan kenyataan.
 
 <b>Kesimpulan Akhir</b>
-Model Support Vector Machine (SVM) dipilih sebagai model terbaik secara keseluruhan karena:
+Model Linear Regression dipilih sebagai model terbaik secara keseluruhan karena:
 
 1. Memiliki error prediksi paling kecil pada data uji.
-2. Tidak menunjukkan overfitting ekstrem seperti model tree-based.
+2. Tidak menunjukkan overfitting ekstrem.
 3. Stabil dan cocok untuk deployment pada data fashion yang fluktuatif.
 
 Proses modeling ini membuktikan bahwa pendekatan berbasis machine learning dapat digunakan untuk memahami dan memprediksi tren harga produk fashion secara lebih akurat dan berbasis data.
