@@ -331,9 +331,13 @@ best_model = mse_df['MSE'].idxmin()
 print(f"Model dengan MSE terkecil adalah {best_model}, menunjukkan performa terbaik pada dataset ini.")
 
 """Output:
-- SVM adalah model terbaik secara keseluruhan dalam hal keseimbangan antara training dan testing error.
-- Random Forest & XGBoost overfitting karena error di train set nol, tapi meningkat di test set.
-- Jika tujuannya adalah model yang stabil dan tidak terlalu sensitif terhadap data baru, SVM lebih direkomendasikan untuk deployment.
+- Random Forest memiliki performa terbaik MSE terkecil: 2919.99. Menunjukkan kemampuan terbaik dalam meminimalkan error prediksi di antara ketiga model.
+
+- XGBoost memiliki performa yang hampir setara dengan Random Forest yaitu MSE: 2927.29. Selisih sangat kecil dengan Random Forest, menunjukkan keduanya mampu menangkap pola kompleks data.
+
+- Linear Regression memiliki MSE tertinggi yaitu 2959.45, meskipun sedikit lebih tinggi, model ini tetap kompetitif dan memiliki keunggulan dalam kesederhanaan dan interpretabilitas.
+
+Perbedaan MSE antar model tergolong kecil. Selisih antar model berkisar ±40 poin, menunjukkan semua model cukup baik secara prediktif.
 
 Output:
 Plot ini menunjukkan perbandingan error antara ketiga model pada data train dan test.
@@ -341,46 +345,39 @@ Plot ini menunjukkan perbandingan error antara ketiga model pada data train dan 
 # Contoh Prediksi Data Baru
 """
 
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
-from sklearn.svm import SVR  # Karena ini regresi
+import pandas as pd
 
-svm_pipeline = Pipeline([
-    ('scaler', StandardScaler()),
-    ('svm', SVR())
-])
-
-# Latih model dulu
-svm_pipeline.fit(X_train, y_train)
-
-# Prediksi contoh data
-prediksi = X_test.iloc[:1].copy()
-y_true = y_test[:1]
-
-pred_svm = svm_pipeline.predict(prediksi).round(1)
-print(f"Prediksi SVM: {pred_svm}, Nilai Asli: {y_true.values}")
-
+# Dictionary model yang sudah dilatih
 model_dict = {
-    "SVM": svm_pipeline,
+    "Linear Regression": lr,
     "Random Forest": best_rf,
     "XGBoost": best_xgb
 }
 
+# Ambil 1 data uji untuk prediksi
+prediksi = X_test.iloc[:1]
+y_true = y_test[:1].values
 
-pred_dict = {'y_true': y_test[:1].values}
+# Simpan hasil prediksi
+pred_dict = {'y_true': y_true}
 
 for name, model in model_dict.items():
     pred_dict[f'prediksi_{name}'] = model.predict(prediksi).round(1)
 
-import pandas as pd
+# Tampilkan dalam bentuk tabel
 print(pd.DataFrame(pred_dict))
 
 """Output:
 
-- Data pada tabel menunjukkan hasil prediksi dari tiga model regresi, yaitu Support Vector Machine (SVM), Random Forest, dan XGBoost, dibandingkan dengan nilai aktual (ground truth) sebesar 101.
-- Support Vector Machine (SVM) menghasilkan prediksi sebesar 106.2, yang berarti terjadi selisih (error) sebesar +5.2 dari nilai aktual. Ini menunjukkan bahwa model SVM cukup mendekati nilai yang sebenarnya, dengan deviasi yang relatif kecil.
-- Random Forest memberikan hasil prediksi sebesar 114.4, menyimpang +13.4 dari nilai aktual. Ini adalah deviasi terbesar di antara ketiga model, yang menunjukkan bahwa prediksi dari Random Forest untuk data ini kurang akurat.
-- XGBoost memprediksi nilai sebesar 107.5, dengan selisih +6.5 terhadap nilai sebenarnya. Meskipun tidak seakurat SVM, prediksi ini masih dalam batas kesalahan yang moderat.
+- Data pada tabel menunjukkan hasil prediksi dari tiga model regresi, yaitu Linear Regression, Random Forest, dan XGBoost, dibandingkan dengan nilai aktual (ground truth) sebesar 101.
 
-Kesimpulan: Untuk sampel data ini, model SVM menunjukkan performa terbaik karena menghasilkan prediksi yang paling mendekati nilai aktual. XGBoost berada di posisi kedua, sedangkan Random Forest memiliki error tertinggi.
+- Linear Regression menghasilkan prediksi sebesar 104.2, yang berarti terjadi selisih (error) sebesar +3.2 dari nilai aktual. Ini menunjukkan bahwa model Linear Regression memberikan hasil yang paling mendekati nilai sebenarnya, dengan deviasi paling kecil.
+
+- Random Forest memberikan hasil prediksi sebesar 114.4, menyimpang +13.4 dari nilai aktual. Ini merupakan deviasi terbesar di antara ketiga model, menandakan bahwa prediksi dari Random Forest kurang akurat untuk data ini.
+
+- XGBoost memprediksi nilai sebesar 107.5, dengan selisih +6.5 terhadap nilai sebenarnya. Meskipun tidak seakurat Linear Regression, hasil prediksinya masih dalam batas kesalahan yang moderat dan lebih baik dibandingkan Random Forest.
+
+
+
+Kesimpulan: Linear Regression menunjukkan performa terbaik karena menghasilkan prediksi paling mendekati nilai aktual. XGBoost berada di posisi kedua, masih tergolong akurat meskipun memiliki deviasi sedang Random Forest memiliki error tertinggi, menunjukkan kinerjanya kurang optimal untuk contoh ini.
 """
